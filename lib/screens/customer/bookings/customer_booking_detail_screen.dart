@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'meeting_link_screen.dart';
+import 'cancel_booking_screen.dart';
 import '../chat/customer_chat_screen.dart';
 
 class CustomerBookingDetailScreen extends StatelessWidget {
@@ -254,7 +255,9 @@ class CustomerBookingDetailScreen extends StatelessWidget {
             children: [
               Expanded(
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const CancelBookingScreen()),
+                  ),
                   child: Container(
                     height: 52,
                     decoration: BoxDecoration(

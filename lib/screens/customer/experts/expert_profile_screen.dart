@@ -232,7 +232,9 @@ class _ExpertProfileScreenState extends State<ExpertProfileScreen> {
                         const SizedBox(height: 80),
                       ],
                     )
-                  : const SizedBox(height: 80),
+                  : _tabIndex == 1
+                      ? _ServicesTab()
+                      : _ReviewsTab(),
             ),
           ),
         ],
@@ -343,6 +345,307 @@ class _LangChip extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(label, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Color(0xFF374151))),
+    );
+  }
+}
+
+class _ServicesTab extends StatelessWidget {
+  final List<Map<String, dynamic>> _services = const [
+    {
+      'name': 'Income Tax Filing',
+      'desc': 'End-to-end ITR filing for salaried & self-employed individuals.',
+      'price': '₹1,499',
+      'modes': ['Online', 'Office visit'],
+      'booked': '1,240',
+    },
+    {
+      'name': 'GST Registration',
+      'desc': 'Complete GST registration with document filing and follow-up.',
+      'price': '₹2,999',
+      'modes': ['Online'],
+      'booked': '860',
+    },
+    {
+      'name': 'Company Audit',
+      'desc': 'Statutory audit for private limited companies and LLPs.',
+      'price': 'On quote',
+      'modes': ['Office visit'],
+      'booked': '210',
+    },
+  ];
+
+  const _ServicesTab();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        ..._services.map((s) => Padding(
+              padding: const EdgeInsets.only(bottom: 12),
+              child: Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.04), blurRadius: 8)],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Text(s['name'] as String,
+                              style: const TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.w700, color: Color(0xFF0D0D2B))),
+                        ),
+                        Text(s['price'] as String,
+                            style: const TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w700, color: Color(0xFF4158D0))),
+                      ],
+                    ),
+                    const SizedBox(height: 6),
+                    Text(s['desc'] as String,
+                        style: const TextStyle(fontSize: 13, color: Color(0xFF6B7280), height: 1.5)),
+                    const SizedBox(height: 10),
+                    Row(
+                      children: [
+                        ...(s['modes'] as List<String>).map((m) => Padding(
+                              padding: const EdgeInsets.only(right: 6),
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFFEEF0FA),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Text(m,
+                                    style: const TextStyle(
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.w500,
+                                        color: Color(0xFF4158D0))),
+                              ),
+                            )),
+                        const Spacer(),
+                        const Icon(Icons.circle, size: 6, color: Color(0xFF22C55E)),
+                        const SizedBox(width: 4),
+                        Text('${s['booked']} booked',
+                            style: const TextStyle(fontSize: 12, color: Color(0xFF6B7280))),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            )),
+        const SizedBox(height: 80),
+      ],
+    );
+  }
+}
+
+class _ReviewsTab extends StatelessWidget {
+  const _ReviewsTab();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Rating summary
+        Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16),
+            boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.04), blurRadius: 8)],
+          ),
+          child: Row(
+            children: [
+              Column(
+                children: const [
+                  Text('4.9',
+                      style: TextStyle(
+                          fontSize: 40, fontWeight: FontWeight.w800, color: Color(0xFF0D0D2B))),
+                  Row(
+                    children: [
+                      Icon(Icons.star_rounded, color: Color(0xFFF59E0B), size: 16),
+                      Icon(Icons.star_rounded, color: Color(0xFFF59E0B), size: 16),
+                      Icon(Icons.star_rounded, color: Color(0xFFF59E0B), size: 16),
+                      Icon(Icons.star_rounded, color: Color(0xFFF59E0B), size: 16),
+                      Icon(Icons.star_rounded, color: Color(0xFFF59E0B), size: 16),
+                    ],
+                  ),
+                  SizedBox(height: 4),
+                  Text('312 reviews',
+                      style: TextStyle(fontSize: 11, color: Color(0xFF9CA3AF))),
+                ],
+              ),
+              const SizedBox(width: 20),
+              Expanded(
+                child: Column(
+                  children: [
+                    _RatingBar(stars: 5, fraction: 0.82),
+                    _RatingBar(stars: 4, fraction: 0.12),
+                    _RatingBar(stars: 3, fraction: 0.04),
+                    _RatingBar(stars: 2, fraction: 0.01),
+                    _RatingBar(stars: 1, fraction: 0.01),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+
+        const SizedBox(height: 16),
+
+        // Review cards
+        _ReviewCard(
+          initials: 'PS',
+          name: 'Priya S.',
+          date: '14 Jun 2026',
+          stars: 5,
+          tag: 'Income Tax Filing',
+          review: 'Rahul was incredibly thorough. Filed my ITR with all deductions optimised. Super professional and quick!',
+          colors: [const Color(0xFF6366F1), const Color(0xFF4338CA)],
+        ),
+        const SizedBox(height: 12),
+        _ReviewCard(
+          initials: 'AK',
+          name: 'Amit K.',
+          date: '2 Jun 2026',
+          stars: 5,
+          tag: 'GST Registration',
+          review: 'Completed GST registration in 3 days flat. Kept me updated at every step. Highly recommend.',
+          colors: [const Color(0xFF14B8A6), const Color(0xFF3B82F6)],
+        ),
+        const SizedBox(height: 12),
+        _ReviewCard(
+          initials: 'RD',
+          name: 'Riya D.',
+          date: '28 May 2026',
+          stars: 4,
+          tag: 'Income Tax Filing',
+          review: 'Very knowledgeable. Took a little longer than expected but the quality was excellent.',
+          colors: [const Color(0xFFEC4899), const Color(0xFF9333EA)],
+        ),
+
+        const SizedBox(height: 80),
+      ],
+    );
+  }
+}
+
+class _RatingBar extends StatelessWidget {
+  final int stars;
+  final double fraction;
+  const _RatingBar({required this.stars, required this.fraction});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 2),
+      child: Row(
+        children: [
+          Text('$stars', style: const TextStyle(fontSize: 11, color: Color(0xFF9CA3AF))),
+          const SizedBox(width: 4),
+          const Icon(Icons.star_rounded, color: Color(0xFFF59E0B), size: 11),
+          const SizedBox(width: 6),
+          Expanded(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(4),
+              child: LinearProgressIndicator(
+                value: fraction,
+                minHeight: 6,
+                backgroundColor: const Color(0xFFF3F4F6),
+                valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFFF59E0B)),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _ReviewCard extends StatelessWidget {
+  final String initials, name, date, tag, review;
+  final int stars;
+  final List<Color> colors;
+
+  const _ReviewCard({
+    required this.initials,
+    required this.name,
+    required this.date,
+    required this.stars,
+    required this.tag,
+    required this.review,
+    required this.colors,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.04), blurRadius: 8)],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                width: 36,
+                height: 36,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: colors),
+                  shape: BoxShape.circle,
+                ),
+                child: Center(
+                  child: Text(initials,
+                      style: const TextStyle(
+                          color: Colors.white, fontSize: 13, fontWeight: FontWeight.w700)),
+                ),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(name,
+                        style: const TextStyle(
+                            fontSize: 13, fontWeight: FontWeight.w700, color: Color(0xFF0D0D2B))),
+                    Text(date,
+                        style: const TextStyle(fontSize: 11, color: Color(0xFF9CA3AF))),
+                  ],
+                ),
+              ),
+              Row(
+                children: List.generate(
+                  stars,
+                  (i) => const Icon(Icons.star_rounded, color: Color(0xFFF59E0B), size: 13),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+            decoration: BoxDecoration(
+              color: const Color(0xFFEEF0FA),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Text(tag,
+                style: const TextStyle(fontSize: 11, color: Color(0xFF4158D0), fontWeight: FontWeight.w500)),
+          ),
+          const SizedBox(height: 8),
+          Text(review,
+              style: const TextStyle(fontSize: 13, color: Color(0xFF4B5563), height: 1.5)),
+        ],
+      ),
     );
   }
 }

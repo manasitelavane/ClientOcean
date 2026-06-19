@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'core/app_config.dart';
-import 'screens/onboarding/onboarding_screen.dart';
+import 'screens/splash_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +21,7 @@ class ServeDesk extends StatelessWidget {
       title: 'ServeDesk',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.theme, // ← all tokens come from lib/core/app_config.dart
-      home: const OnboardingScreen(),
+      home: const SplashScreen(),
     );
   }
 }

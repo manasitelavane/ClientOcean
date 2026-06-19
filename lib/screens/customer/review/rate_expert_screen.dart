@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'review_success_screen.dart';
 
 class RateExpertScreen extends StatefulWidget {
   const RateExpertScreen({super.key});
@@ -173,27 +174,9 @@ class _RateExpertScreenState extends State<RateExpertScreen> {
         child: Padding(
           padding: const EdgeInsets.fromLTRB(24, 8, 24, 16),
           child: GestureDetector(
-            onTap: () {
-              showDialog(
-                context: context,
-                builder: (_) => AlertDialog(
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                  title: const Text('Review submitted!', textAlign: TextAlign.center,
-                      style: TextStyle(fontWeight: FontWeight.w700)),
-                  content: const Text('Thank you for your feedback.',
-                      textAlign: TextAlign.center, style: TextStyle(color: Color(0xFF6B7280))),
-                  actions: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                        Navigator.pop(context);
-                      },
-                      child: const Text('Done'),
-                    ),
-                  ],
-                ),
-              );
-            },
+            onTap: () => Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (_) => const ReviewSuccessScreen()),
+            ),
             child: Container(
               height: 56,
               decoration: BoxDecoration(

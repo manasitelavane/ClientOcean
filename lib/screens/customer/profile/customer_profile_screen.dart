@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'edit_profile_screen.dart';
 import 'saved_addresses_screen.dart';
+import 'payment_methods_screen.dart';
+import 'saved_experts_screen.dart';
+import 'notification_preferences_screen.dart';
+import 'privacy_security_screen.dart';
+import 'help_support_screen.dart';
 import '../../pro/pro_shell.dart';
 import '../../onboarding/onboarding_screen.dart';
 
@@ -111,14 +116,18 @@ class CustomerProfileScreen extends StatelessWidget {
                         icon: Icons.credit_card_rounded,
                         label: 'Payment methods',
                         subtitle: 'UPI, 1 card',
-                        onTap: () {},
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) => const PaymentMethodsScreen()),
+                        ),
                         showDivider: true,
                       ),
                       _MenuItem(
                         icon: Icons.favorite_border_rounded,
                         label: 'Saved experts',
                         subtitle: '3 saved',
-                        onTap: () {},
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) => const SavedExpertsScreen()),
+                        ),
                         showDivider: false,
                       ),
                     ],
@@ -130,21 +139,27 @@ class CustomerProfileScreen extends StatelessWidget {
                         icon: Icons.notifications_outlined,
                         label: 'Notifications',
                         subtitle: '',
-                        onTap: () {},
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) => const NotificationPreferencesScreen()),
+                        ),
                         showDivider: true,
                       ),
                       _MenuItem(
                         icon: Icons.shield_outlined,
                         label: 'Privacy & security',
                         subtitle: '',
-                        onTap: () {},
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) => const PrivacySecurityScreen()),
+                        ),
                         showDivider: true,
                       ),
                       _MenuItem(
                         icon: Icons.chat_bubble_outline,
                         label: 'Help & support',
                         subtitle: '',
-                        onTap: () {},
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) => const HelpSupportScreen()),
+                        ),
                         showDivider: false,
                       ),
                     ],

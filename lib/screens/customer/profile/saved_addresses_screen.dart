@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'add_address_screen.dart';
 
 class SavedAddressesScreen extends StatelessWidget {
   const SavedAddressesScreen({super.key});
@@ -62,7 +63,9 @@ class SavedAddressesScreen extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 20, 16),
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const AddAddressScreen()),
+                  ),
                   child: Container(
                     height: 56,
                     decoration: BoxDecoration(
