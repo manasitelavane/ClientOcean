@@ -55,36 +55,44 @@ class UploadDocumentsScreen extends StatelessWidget {
                     const SizedBox(height: 24),
 
                     // Upload area
-                    Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.symmetric(vertical: 32),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(
-                          color: const Color(0xFFD1D5DB),
-                          style: BorderStyle.solid,
-                          width: 1.5,
+                    GestureDetector(
+                      onTap: () => ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('File picker coming soon'),
+                          behavior: SnackBarBehavior.floating,
                         ),
                       ),
-                      child: Column(
-                        children: [
-                          Container(
-                            width: 56,
-                            height: 56,
-                            decoration: BoxDecoration(
-                              color: const Color(0xFFEEF0FA),
-                              borderRadius: BorderRadius.circular(14),
-                            ),
-                            child: const Icon(Icons.upload_rounded, color: Color(0xFF4158D0), size: 28),
+                      child: Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.symmetric(vertical: 32),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(
+                            color: const Color(0xFFD1D5DB),
+                            style: BorderStyle.solid,
+                            width: 1.5,
                           ),
-                          const SizedBox(height: 12),
-                          const Text('Tap to upload',
-                              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Color(0xFF0D0D2B))),
-                          const SizedBox(height: 4),
-                          const Text('or drag files here',
-                              style: TextStyle(fontSize: 13, color: Color(0xFF9CA3AF))),
-                        ],
+                        ),
+                        child: Column(
+                          children: [
+                            Container(
+                              width: 56,
+                              height: 56,
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFEEF0FA),
+                                borderRadius: BorderRadius.circular(14),
+                              ),
+                              child: const Icon(Icons.upload_rounded, color: Color(0xFF4158D0), size: 28),
+                            ),
+                            const SizedBox(height: 12),
+                            const Text('Tap to upload',
+                                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Color(0xFF0D0D2B))),
+                            const SizedBox(height: 4),
+                            const Text('or drag files here',
+                                style: TextStyle(fontSize: 13, color: Color(0xFF9CA3AF))),
+                          ],
+                        ),
                       ),
                     ),
 

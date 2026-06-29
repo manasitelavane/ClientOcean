@@ -85,7 +85,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                       ),
                       const SizedBox(height: 28),
                       const Text(
-                        'ServeDesk',
+                        'ClientOcean',
                         style: TextStyle(
                           fontSize: 36,
                           fontWeight: FontWeight.w800,

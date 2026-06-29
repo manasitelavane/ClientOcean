@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../review/rate_expert_screen.dart';
+import '../bookings/customer_booking_detail_screen.dart';
+import '../chat/customer_chat_screen.dart';
 
 class AlertsScreen extends StatelessWidget {
   const AlertsScreen({super.key});
@@ -40,7 +42,9 @@ class AlertsScreen extends StatelessWidget {
                     subtitle: 'Rahul Kapoor confirmed your booking SD-48217.',
                     time: '2h ago',
                     unread: true,
-                    onTap: () {},
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const CustomerBookingDetailScreen()),
+                    ),
                   ),
                   const SizedBox(height: 10),
                   _NotifCard(
@@ -51,7 +55,9 @@ class AlertsScreen extends StatelessWidget {
                     subtitle: 'Adv. Meera Nair sent you a message.',
                     time: '5h ago',
                     unread: true,
-                    onTap: () {},
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const CustomerChatScreen()),
+                    ),
                   ),
                   const SizedBox(height: 10),
                   _NotifCard(
@@ -62,7 +68,12 @@ class AlertsScreen extends StatelessWidget {
                     subtitle: 'Payment of ₹2,999 received for SD-47882.',
                     time: 'Yesterday',
                     unread: false,
-                    onTap: () {},
+                    onTap: () => ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Receipt for SD-47882 · ₹2,999'),
+                        behavior: SnackBarBehavior.floating,
+                      ),
+                    ),
                   ),
                   const SizedBox(height: 10),
                   _NotifCard(

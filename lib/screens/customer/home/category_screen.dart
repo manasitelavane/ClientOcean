@@ -94,43 +94,135 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
             Expanded(
               child: ListView(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
                 children: [
-                  _ServiceCard(
-                    icon: Icons.trending_up_rounded,
-                    iconColor: const Color(0xFF059669),
-                    iconBg: const Color(0xFFD1FAE5),
-                    name: 'Income Tax Filing',
-                    subtitle: '1,240 booked · Finance & Tax',
-                    price: '₹1,499',
-                    priceLabel: 'starting',
-                    onTap: () => Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) => const ServiceDetailScreen()),
+                  // All (0) & Popular (1) — income tax + gst + audit
+                  if (_filterIndex == 0 || _filterIndex == 1) ...[
+                    _ServiceCard(
+                      icon: Icons.trending_up_rounded,
+                      iconColor: const Color(0xFF059669),
+                      iconBg: const Color(0xFFD1FAE5),
+                      name: 'Income Tax Filing',
+                      subtitle: '1,240 booked · Finance & Tax',
+                      price: '₹1,499',
+                      priceLabel: 'starting',
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => const ServiceDetailScreen()),
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 10),
-                  _ServiceCard(
-                    icon: Icons.trending_up_rounded,
-                    iconColor: const Color(0xFF059669),
-                    iconBg: const Color(0xFFD1FAE5),
-                    name: 'GST Registration',
-                    subtitle: '860 booked · Finance & Tax',
-                    price: '₹2,999',
-                    priceLabel: '',
-                    onTap: () {},
-                  ),
-                  const SizedBox(height: 10),
-                  _ServiceCard(
-                    icon: Icons.trending_up_rounded,
-                    iconColor: const Color(0xFF059669),
-                    iconBg: const Color(0xFFD1FAE5),
-                    name: 'Company Audit',
-                    subtitle: '210 booked · Finance & Tax',
-                    price: 'On quote',
-                    priceLabel: '',
-                    onTap: () {},
-                  ),
-                  const SizedBox(height: 24),
+                    const SizedBox(height: 10),
+                    _ServiceCard(
+                      icon: Icons.trending_up_rounded,
+                      iconColor: const Color(0xFF059669),
+                      iconBg: const Color(0xFFD1FAE5),
+                      name: 'GST Registration',
+                      subtitle: '860 booked · Finance & Tax',
+                      price: '₹2,999',
+                      priceLabel: '',
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => const ServiceDetailScreen()),
+                      ),
+                    ),
+                    if (_filterIndex == 0) ...[
+                      const SizedBox(height: 10),
+                      _ServiceCard(
+                        icon: Icons.trending_up_rounded,
+                        iconColor: const Color(0xFF059669),
+                        iconBg: const Color(0xFFD1FAE5),
+                        name: 'Company Audit',
+                        subtitle: '210 booked · Finance & Tax',
+                        price: 'On quote',
+                        priceLabel: '',
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) => const ServiceDetailScreen()),
+                        ),
+                      ),
+                    ],
+                  ],
+                  // Online (2) — income tax + tax consultation
+                  if (_filterIndex == 2) ...[
+                    _ServiceCard(
+                      icon: Icons.trending_up_rounded,
+                      iconColor: const Color(0xFF059669),
+                      iconBg: const Color(0xFFD1FAE5),
+                      name: 'Income Tax Filing',
+                      subtitle: '1,240 booked · Online only',
+                      price: '₹1,499',
+                      priceLabel: 'starting',
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => const ServiceDetailScreen()),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    _ServiceCard(
+                      icon: Icons.trending_up_rounded,
+                      iconColor: const Color(0xFF059669),
+                      iconBg: const Color(0xFFD1FAE5),
+                      name: 'Tax Consultation',
+                      subtitle: '540 booked · Online only',
+                      price: '₹749',
+                      priceLabel: 'per hour',
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => const ServiceDetailScreen()),
+                      ),
+                    ),
+                  ],
+                  // In-person (3) — gst + company audit
+                  if (_filterIndex == 3) ...[
+                    _ServiceCard(
+                      icon: Icons.trending_up_rounded,
+                      iconColor: const Color(0xFF059669),
+                      iconBg: const Color(0xFFD1FAE5),
+                      name: 'GST Registration',
+                      subtitle: '860 booked · Office visit',
+                      price: '₹2,999',
+                      priceLabel: '',
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => const ServiceDetailScreen()),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    _ServiceCard(
+                      icon: Icons.trending_up_rounded,
+                      iconColor: const Color(0xFF059669),
+                      iconBg: const Color(0xFFD1FAE5),
+                      name: 'Company Audit',
+                      subtitle: '210 booked · Office visit',
+                      price: 'On quote',
+                      priceLabel: '',
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => const ServiceDetailScreen()),
+                      ),
+                    ),
+                  ],
+                  // Top rated (4) — income tax + gst
+                  if (_filterIndex == 4) ...[
+                    _ServiceCard(
+                      icon: Icons.trending_up_rounded,
+                      iconColor: const Color(0xFF059669),
+                      iconBg: const Color(0xFFD1FAE5),
+                      name: 'Income Tax Filing',
+                      subtitle: '4.9★ · 1,240 booked',
+                      price: '₹1,499',
+                      priceLabel: 'starting',
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => const ServiceDetailScreen()),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    _ServiceCard(
+                      icon: Icons.trending_up_rounded,
+                      iconColor: const Color(0xFF059669),
+                      iconBg: const Color(0xFFD1FAE5),
+                      name: 'GST Registration',
+                      subtitle: '4.8★ · 860 booked',
+                      price: '₹2,999',
+                      priceLabel: '',
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => const ServiceDetailScreen()),
+                      ),
+                    ),
+                  ],
                 ],
               ),
             ),

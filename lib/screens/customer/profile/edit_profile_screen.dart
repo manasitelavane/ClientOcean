@@ -57,15 +57,23 @@ class EditProfileScreen extends StatelessWidget {
                         Positioned(
                           bottom: 0,
                           right: 0,
-                          child: Container(
-                            width: 28,
-                            height: 28,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              shape: BoxShape.circle,
-                              boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.1), blurRadius: 6)],
+                          child: GestureDetector(
+                            onTap: () => ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Photo picker coming soon'),
+                                behavior: SnackBarBehavior.floating,
+                              ),
                             ),
-                            child: const Icon(Icons.camera_alt_rounded, size: 15, color: Color(0xFF4158D0)),
+                            child: Container(
+                              width: 28,
+                              height: 28,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                shape: BoxShape.circle,
+                                boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.1), blurRadius: 6)],
+                              ),
+                              child: const Icon(Icons.camera_alt_rounded, size: 15, color: Color(0xFF4158D0)),
+                            ),
                           ),
                         ),
                       ],

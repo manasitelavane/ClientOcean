@@ -3,6 +3,7 @@ import 'search_screen.dart';
 import 'category_screen.dart';
 import 'service_detail_screen.dart';
 import '../experts/expert_profile_screen.dart';
+import '../alerts/alerts_screen.dart';
 
 class CustomerHomeScreen extends StatelessWidget {
   const CustomerHomeScreen({super.key});
@@ -53,34 +54,39 @@ class CustomerHomeScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                          Stack(
-                            children: [
-                              Container(
-                                width: 44,
-                                height: 44,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(12),
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.black.withValues(alpha: 0.06),
-                                        blurRadius: 8)
-                                  ],
+                          GestureDetector(
+                            onTap: () => Navigator.of(context).push(
+                              MaterialPageRoute(builder: (_) => const AlertsScreen()),
+                            ),
+                            child: Stack(
+                              children: [
+                                Container(
+                                  width: 44,
+                                  height: 44,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(12),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.black.withValues(alpha: 0.06),
+                                          blurRadius: 8)
+                                    ],
+                                  ),
+                                  child: const Icon(Icons.notifications_outlined,
+                                      color: Color(0xFF4158D0), size: 22),
                                 ),
-                                child: const Icon(Icons.notifications_outlined,
-                                    color: Color(0xFF4158D0), size: 22),
-                              ),
-                              Positioned(
-                                top: 8,
-                                right: 8,
-                                child: Container(
-                                  width: 8,
-                                  height: 8,
-                                  decoration: const BoxDecoration(
-                                      color: Color(0xFFEF4444), shape: BoxShape.circle),
+                                Positioned(
+                                  top: 8,
+                                  right: 8,
+                                  child: Container(
+                                    width: 8,
+                                    height: 8,
+                                    decoration: const BoxDecoration(
+                                        color: Color(0xFFEF4444), shape: BoxShape.circle),
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -135,7 +141,9 @@ class CustomerHomeScreen extends StatelessWidget {
             // Categories
             _SectionRow(
               title: 'Categories',
-              onSeeAll: () {},
+              onSeeAll: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const SearchScreen()),
+              ),
             ),
             const SizedBox(height: 12),
             Padding(
@@ -162,35 +170,45 @@ class CustomerHomeScreen extends StatelessWidget {
                     icon: Icons.shield_outlined,
                     iconColor: const Color(0xFF4158D0),
                     bgColor: const Color(0xFFE0E7FF),
-                    onTap: () {},
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const CategoryScreen()),
+                    ),
                   ),
                   _CategoryCard(
                     label: 'Health',
                     icon: Icons.favorite_border_rounded,
                     iconColor: const Color(0xFFEF4444),
                     bgColor: const Color(0xFFFEE2E2),
-                    onTap: () {},
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const CategoryScreen()),
+                    ),
                   ),
                   _CategoryCard(
                     label: 'Tech & IT',
                     icon: Icons.bolt_rounded,
                     iconColor: const Color(0xFF7C3AED),
                     bgColor: const Color(0xFFEDE9FE),
-                    onTap: () {},
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const CategoryScreen()),
+                    ),
                   ),
                   _CategoryCard(
                     label: 'Design',
                     icon: Icons.edit_outlined,
                     iconColor: const Color(0xFF16A34A),
                     bgColor: const Color(0xFFDCFCE7),
-                    onTap: () {},
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const CategoryScreen()),
+                    ),
                   ),
                   _CategoryCard(
                     label: 'Business',
                     icon: Icons.business_center_outlined,
                     iconColor: const Color(0xFFD97706),
                     bgColor: const Color(0xFFFEF3C7),
-                    onTap: () {},
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const CategoryScreen()),
+                    ),
                   ),
                 ],
               ),
@@ -199,7 +217,12 @@ class CustomerHomeScreen extends StatelessWidget {
             const SizedBox(height: 24),
 
             // Featured experts
-            _SectionRow(title: 'Featured experts', onSeeAll: () {}),
+            _SectionRow(
+              title: 'Featured experts',
+              onSeeAll: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const SearchScreen()),
+              ),
+            ),
             const SizedBox(height: 12),
             SizedBox(
               height: 140,
@@ -228,7 +251,9 @@ class CustomerHomeScreen extends StatelessWidget {
                     reviews: '198',
                     isOnline: false,
                     avatarColors: const [Color(0xFF6366F1), Color(0xFF4338CA)],
-                    onTap: () {},
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const ExpertProfileScreen()),
+                    ),
                   ),
                 ],
               ),
@@ -237,7 +262,12 @@ class CustomerHomeScreen extends StatelessWidget {
             const SizedBox(height: 24),
 
             // Popular services
-            _SectionRow(title: 'Popular services', onSeeAll: () {}),
+            _SectionRow(
+              title: 'Popular services',
+              onSeeAll: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const SearchScreen()),
+              ),
+            ),
             const SizedBox(height: 12),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),

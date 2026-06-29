@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'customer_booking_detail_screen.dart';
+import '../review/rate_expert_screen.dart';
 
 class CustomerBookingsScreen extends StatefulWidget {
   const CustomerBookingsScreen({super.key});
@@ -108,15 +109,81 @@ class _CustomerBookingsScreenState extends State<CustomerBookingsScreen> {
                           mode: 'Home visit',
                           modeColor: const Color(0xFF22C55E),
                           modeBg: const Color(0xFFDCFCE7),
-                          onTap: () {},
+                          onTap: () => Navigator.of(context).push(
+                            MaterialPageRoute(builder: (_) => const CustomerBookingDetailScreen()),
+                          ),
                         ),
                         const SizedBox(height: 24),
                       ],
                     )
-                  : const Center(
-                      child: Text('No bookings',
-                          style: TextStyle(fontSize: 14, color: Color(0xFF9CA3AF))),
-                    ),
+                  : _tabIndex == 1
+                      ? ListView(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          children: [
+                            _BookingCard(
+                              id: 'SD-47882',
+                              status: 'Completed',
+                              statusColor: const Color(0xFF22C55E),
+                              statusBg: const Color(0xFFDCFCE7),
+                              initials: 'RK',
+                              avatarColors: const [Color(0xFF4DD0E1), Color(0xFF4158D0)],
+                              serviceName: 'Income Tax Filing',
+                              expertName: 'Rahul Kapoor',
+                              date: 'Mon, 3 Jun',
+                              time: '11:00 AM',
+                              mode: 'Online',
+                              modeColor: const Color(0xFF22C55E),
+                              modeBg: const Color(0xFFDCFCE7),
+                              onTap: () => Navigator.of(context).push(
+                                MaterialPageRoute(builder: (_) => const RateExpertScreen()),
+                              ),
+                            ),
+                            const SizedBox(height: 12),
+                            _BookingCard(
+                              id: 'SD-47710',
+                              status: 'Completed',
+                              statusColor: const Color(0xFF22C55E),
+                              statusBg: const Color(0xFFDCFCE7),
+                              initials: 'SI',
+                              avatarColors: const [Color(0xFF6366F1), Color(0xFF4338CA)],
+                              serviceName: 'Tax Consultation',
+                              expertName: 'Sneha Iyer',
+                              date: 'Tue, 28 May',
+                              time: '3:00 PM',
+                              mode: 'Online',
+                              modeColor: const Color(0xFF22C55E),
+                              modeBg: const Color(0xFFDCFCE7),
+                              onTap: () => Navigator.of(context).push(
+                                MaterialPageRoute(builder: (_) => const RateExpertScreen()),
+                              ),
+                            ),
+                            const SizedBox(height: 24),
+                          ],
+                        )
+                      : ListView(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          children: [
+                            _BookingCard(
+                              id: 'SD-48001',
+                              status: 'Cancelled',
+                              statusColor: const Color(0xFFEF4444),
+                              statusBg: const Color(0xFFFEE2E2),
+                              initials: 'AM',
+                              avatarColors: const [Color(0xFF6366F1), Color(0xFF4338CA)],
+                              serviceName: 'GST Registration',
+                              expertName: 'Adv. Meera Nair',
+                              date: 'Sat, 15 Jun',
+                              time: '2:00 PM',
+                              mode: 'Office visit',
+                              modeColor: const Color(0xFF6B7280),
+                              modeBg: const Color(0xFFF3F4F6),
+                              onTap: () => Navigator.of(context).push(
+                                MaterialPageRoute(builder: (_) => const CustomerBookingDetailScreen()),
+                              ),
+                            ),
+                            const SizedBox(height: 24),
+                          ],
+                        ),
             ),
           ],
         ),

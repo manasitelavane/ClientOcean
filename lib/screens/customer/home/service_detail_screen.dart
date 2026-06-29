@@ -157,7 +157,9 @@ class _ServiceDetailScreenState extends State<ServiceDetailScreen> {
                       rating: '4.8',
                       price: '₹1,299',
                       colors: const [Color(0xFF6366F1), Color(0xFF4338CA)],
-                      onTap: () {},
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => const ExpertProfileScreen()),
+                      ),
                     ),
                     const SizedBox(height: 100),
                   ],

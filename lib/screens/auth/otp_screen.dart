@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../customer/customer_shell.dart';
 
 class OtpScreen extends StatefulWidget {
@@ -210,6 +211,7 @@ class _OtpBox extends StatelessWidget {
         textAlign: TextAlign.center,
         keyboardType: TextInputType.number,
         maxLength: 1,
+        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         onChanged: onChanged,
         style: const TextStyle(
           fontSize: 20,
@@ -220,6 +222,7 @@ class _OtpBox extends StatelessWidget {
           counterText: '',
           filled: true,
           fillColor: Colors.white,
+          contentPadding: EdgeInsets.zero,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide(
