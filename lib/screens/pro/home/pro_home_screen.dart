@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../requests/requests_screen.dart';
 import '../booking/booking_detail_screen.dart';
 import '../notifications/notifications_screen.dart';
+import '../schedule/schedule_screen.dart';
 
 class ProHomeScreen extends StatefulWidget {
   const ProHomeScreen({super.key});
@@ -256,8 +257,8 @@ class _ProHomeScreenState extends State<ProHomeScreen> {
                   // Today's schedule
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      Text(
+                    children: [
+                      const Text(
                         "Today's schedule",
                         style: TextStyle(
                           fontSize: 18,
@@ -265,12 +266,18 @@ class _ProHomeScreenState extends State<ProHomeScreen> {
                           color: Color(0xFF0D0D2B),
                         ),
                       ),
-                      Text(
-                        'View all',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xFF4158D0),
+                      GestureDetector(
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (_) => const ScheduleScreen()),
+                        ),
+                        child: const Text(
+                          'View all',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xFF4158D0),
+                          ),
                         ),
                       ),
                     ],
@@ -498,7 +505,12 @@ class _RequestCard extends StatelessWidget {
             children: [
               Expanded(
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () => ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Request declined'),
+                      behavior: SnackBarBehavior.floating,
+                    ),
+                  ),
                   child: Container(
                     height: 44,
                     decoration: BoxDecoration(

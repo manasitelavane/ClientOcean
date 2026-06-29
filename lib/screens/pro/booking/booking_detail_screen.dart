@@ -241,30 +241,38 @@ class BookingDetailScreen extends StatelessWidget {
                   const SizedBox(height: 12),
 
                   // Share meeting link
-                  Container(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(14),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withValues(alpha: 0.04),
-                          blurRadius: 8,
-                        ),
-                      ],
+                  GestureDetector(
+                    onTap: () => ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Meeting link copied to clipboard'),
+                        behavior: SnackBarBehavior.floating,
+                      ),
                     ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.link_rounded,
-                            color: Color(0xFF4158D0), size: 18),
-                        SizedBox(width: 8),
-                        Text('Share meeting link',
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xFF374151))),
-                      ],
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(14),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: 0.04),
+                            blurRadius: 8,
+                          ),
+                        ],
+                      ),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.link_rounded,
+                              color: Color(0xFF4158D0), size: 18),
+                          SizedBox(width: 8),
+                          Text('Share meeting link',
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(0xFF374151))),
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -276,7 +284,12 @@ class BookingDetailScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 0, 20, 32),
             child: GestureDetector(
-              onTap: () {},
+              onTap: () => ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Job started · SD-48217'),
+                  behavior: SnackBarBehavior.floating,
+                ),
+              ),
               child: Container(
                 height: 56,
                 decoration: BoxDecoration(

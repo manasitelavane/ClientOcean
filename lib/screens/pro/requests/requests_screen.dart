@@ -190,18 +190,26 @@ class _RequestCard extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: Container(
-                  height: 44,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: const Color(0xFFE5E7EB)),
-                    borderRadius: BorderRadius.circular(10),
+                child: GestureDetector(
+                  onTap: () => ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Request declined'),
+                      behavior: SnackBarBehavior.floating,
+                    ),
                   ),
-                  child: const Center(
-                    child: Text('Decline',
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xFF374151))),
+                  child: Container(
+                    height: 44,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: const Color(0xFFE5E7EB)),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: const Center(
+                      child: Text('Decline',
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xFF374151))),
+                    ),
                   ),
                 ),
               ),

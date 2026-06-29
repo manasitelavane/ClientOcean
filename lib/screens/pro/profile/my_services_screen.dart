@@ -55,7 +55,12 @@ class _MyServicesScreenState extends State<MyServicesScreen> {
           Padding(
             padding: const EdgeInsets.only(right: 16),
             child: GestureDetector(
-              onTap: () {},
+              onTap: () => ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Add service coming soon'),
+                  behavior: SnackBarBehavior.floating,
+                ),
+              ),
               child: Container(
                 width: 36,
                 height: 36,

@@ -303,7 +303,12 @@ class _PayoutSettingsScreenState extends State<PayoutSettingsScreen> {
         child: Padding(
           padding: const EdgeInsets.fromLTRB(20, 8, 20, 16),
           child: GestureDetector(
-            onTap: () {},
+            onTap: () => ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Add payout account coming soon'),
+                behavior: SnackBarBehavior.floating,
+              ),
+            ),
             child: Container(
               height: 52,
               decoration: BoxDecoration(

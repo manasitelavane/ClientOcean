@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'edit_profile_screen.dart';
 import 'my_services_screen.dart';
 import 'availability_screen.dart';
 import 'my_reviews_screen.dart';
@@ -119,7 +120,10 @@ class ProfileScreen extends StatelessWidget {
                         icon: Icons.person_outline,
                         label: 'Edit profile',
                         subtitle: 'Bio, photo, languages',
-                        onTap: () {},
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (_) => const ProEditProfileScreen()),
+                        ),
                         showDivider: true,
                       ),
                       _MenuItem(

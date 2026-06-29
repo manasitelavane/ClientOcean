@@ -108,17 +108,25 @@ class EarningsScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text('Transactions',
+                  children: [
+                    const Text('Transactions',
                         style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w700,
                             color: Color(0xFF0D0D2B))),
-                    Text('Export',
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xFF4158D0))),
+                    GestureDetector(
+                      onTap: () => ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Export coming soon'),
+                          behavior: SnackBarBehavior.floating,
+                        ),
+                      ),
+                      child: const Text('Export',
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xFF4158D0))),
+                    ),
                   ],
                 ),
               ),
