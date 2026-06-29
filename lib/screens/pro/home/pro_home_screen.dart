@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../requests/requests_screen.dart';
 import '../booking/booking_detail_screen.dart';
+import '../notifications/notifications_screen.dart';
 
 class ProHomeScreen extends StatefulWidget {
   const ProHomeScreen({super.key});
@@ -85,17 +86,24 @@ class _ProHomeScreenState extends State<ProHomeScreen> {
                           ),
                         ),
                         // Bell icon
-                        Container(
-                          width: 40,
-                          height: 40,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(12),
+                        GestureDetector(
+                          onTap: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (_) =>
+                                    const ProNotificationsScreen()),
                           ),
-                          child: const Icon(
-                            Icons.notifications_outlined,
-                            color: Color(0xFF374151),
-                            size: 20,
+                          child: Container(
+                            width: 40,
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: const Icon(
+                              Icons.notifications_outlined,
+                              color: Color(0xFF374151),
+                              size: 20,
+                            ),
                           ),
                         ),
                       ],

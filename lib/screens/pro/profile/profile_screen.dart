@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'my_services_screen.dart';
 import 'availability_screen.dart';
+import 'my_reviews_screen.dart';
+import '../earnings/payout_settings_screen.dart';
+import 'help_support_screen.dart';
 import '../../onboarding/onboarding_screen.dart';
 import '../../customer/customer_shell.dart';
 
@@ -140,10 +143,23 @@ class ProfileScreen extends StatelessWidget {
                         showDivider: true,
                       ),
                       _MenuItem(
+                        icon: Icons.star_border_rounded,
+                        label: 'My reviews',
+                        subtitle: '4.9 · 312 reviews',
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (_) => const MyReviewsScreen()),
+                        ),
+                        showDivider: true,
+                      ),
+                      _MenuItem(
                         icon: Icons.account_balance_wallet_outlined,
                         label: 'Payout settings',
                         subtitle: 'HDFC ••4821',
-                        onTap: () {},
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (_) => const PayoutSettingsScreen()),
+                        ),
                         showDivider: false,
                       ),
                     ],
@@ -175,7 +191,10 @@ class ProfileScreen extends StatelessWidget {
                         icon: Icons.chat_bubble_outline,
                         label: 'Help & support',
                         subtitle: '',
-                        onTap: () {},
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (_) => const ProHelpSupportScreen()),
+                        ),
                         showDivider: false,
                       ),
                     ],
