@@ -5,8 +5,22 @@ import 'service_detail_screen.dart';
 import '../experts/expert_profile_screen.dart';
 import '../alerts/alerts_screen.dart';
 
-class CustomerHomeScreen extends StatelessWidget {
+class CustomerHomeScreen extends StatefulWidget {
   const CustomerHomeScreen({super.key});
+
+  @override
+  State<CustomerHomeScreen> createState() => _CustomerHomeScreenState();
+}
+
+class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
+  final PageController _promoCtrl = PageController();
+  int _promoPage = 0;
+
+  @override
+  void dispose() {
+    _promoCtrl.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -136,7 +150,59 @@ class CustomerHomeScreen extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 24),
+            const SizedBox(height: 20),
+
+            // Promotional slider
+            SizedBox(
+              height: 130,
+              child: PageView(
+                controller: _promoCtrl,
+                onPageChanged: (p) => setState(() => _promoPage = p),
+                children: const [
+                  _PromoCard(
+                    gradient: [Color(0xFF4158D0), Color(0xFF0652DD)],
+                    tag: 'Limited offer',
+                    title: '₹499 off your first booking',
+                    subtitle: 'Use code FIRST499 at checkout',
+                    icon: Icons.local_offer_rounded,
+                  ),
+                  _PromoCard(
+                    gradient: [Color(0xFF059669), Color(0xFF047857)],
+                    tag: 'New service',
+                    title: 'Legal consultation from ₹799',
+                    subtitle: 'Connect with top lawyers instantly',
+                    icon: Icons.shield_outlined,
+                  ),
+                  _PromoCard(
+                    gradient: [Color(0xFF7C3AED), Color(0xFF5B21B6)],
+                    tag: 'Top rated',
+                    title: 'GST filing made easy',
+                    subtitle: '1,200+ businesses trust our CAs',
+                    icon: Icons.trending_up_rounded,
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(3, (i) {
+                return AnimatedContainer(
+                  duration: const Duration(milliseconds: 250),
+                  margin: const EdgeInsets.symmetric(horizontal: 3),
+                  width: _promoPage == i ? 18 : 6,
+                  height: 6,
+                  decoration: BoxDecoration(
+                    color: _promoPage == i
+                        ? const Color(0xFF4158D0)
+                        : const Color(0xFFD1D5DB),
+                    borderRadius: BorderRadius.circular(3),
+                  ),
+                );
+              }),
+            ),
+
+            const SizedBox(height: 20),
 
             // Categories
             _SectionRow(
@@ -546,6 +612,82 @@ class _ServiceRow extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _PromoCard extends StatelessWidget {
+  final List<Color> gradient;
+  final String tag, title, subtitle;
+  final IconData icon;
+
+  const _PromoCard({
+    required this.gradient,
+    required this.tag,
+    required this.title,
+    required this.subtitle,
+    required this.icon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: gradient,
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.2),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Text(tag,
+                      style: const TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white)),
+                ),
+                const SizedBox(height: 8),
+                Text(title,
+                    style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white,
+                        height: 1.2)),
+                const SizedBox(height: 4),
+                Text(subtitle,
+                    style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.white.withValues(alpha: 0.8))),
+              ],
+            ),
+          ),
+          const SizedBox(width: 16),
+          Container(
+            width: 52,
+            height: 52,
+            decoration: BoxDecoration(
+              color: Colors.white.withValues(alpha: 0.15),
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Icon(icon, color: Colors.white, size: 26),
+          ),
+        ],
       ),
     );
   }

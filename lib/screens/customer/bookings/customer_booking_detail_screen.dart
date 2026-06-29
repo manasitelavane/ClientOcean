@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'meeting_link_screen.dart';
 import 'cancel_booking_screen.dart';
+import 'reschedule_booking_screen.dart';
 import '../chat/customer_chat_screen.dart';
 
 class CustomerBookingDetailScreen extends StatelessWidget {
@@ -251,54 +252,98 @@ class CustomerBookingDetailScreen extends StatelessWidget {
       bottomNavigationBar: SafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(20, 8, 20, 16),
-          child: Row(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Expanded(
-                child: GestureDetector(
-                  onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute(builder: (_) => const CancelBookingScreen()),
+              GestureDetector(
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                      builder: (_) => const RescheduleBookingScreen()),
+                ),
+                child: Container(
+                  height: 48,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(30),
+                    border: Border.all(color: const Color(0xFF4158D0)),
                   ),
-                  child: Container(
-                    height: 52,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(30),
-                      border: Border.all(color: const Color(0xFFEF4444)),
-                    ),
-                    child: const Center(
-                      child: Text('Cancel',
-                          style: TextStyle(
-                              color: Color(0xFFEF4444), fontSize: 15, fontWeight: FontWeight.w600)),
+                  child: const Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.calendar_month_outlined,
+                            color: Color(0xFF4158D0), size: 16),
+                        SizedBox(width: 8),
+                        Text('Reschedule',
+                            style: TextStyle(
+                                color: Color(0xFF4158D0),
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600)),
+                      ],
                     ),
                   ),
                 ),
               ),
-              const SizedBox(width: 12),
-              Expanded(
-                flex: 2,
-                child: GestureDetector(
-                  onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute(builder: (_) => const CustomerChatScreen()),
-                  ),
-                  child: Container(
-                    height: 52,
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(colors: [Color(0xFF4DD0E1), Color(0xFF4158D0)]),
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: const Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.chat_bubble_outline_rounded, color: Colors.white, size: 16),
-                          SizedBox(width: 8),
-                          Text('Message expert',
-                              style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w600)),
-                        ],
+              const SizedBox(height: 10),
+              Row(
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (_) => const CancelBookingScreen()),
+                      ),
+                      child: Container(
+                        height: 48,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(30),
+                          border: Border.all(color: const Color(0xFFEF4444)),
+                        ),
+                        child: const Center(
+                          child: Text('Cancel',
+                              style: TextStyle(
+                                  color: Color(0xFFEF4444),
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600)),
+                        ),
                       ),
                     ),
                   ),
-                ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    flex: 2,
+                    child: GestureDetector(
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (_) => const CustomerChatScreen()),
+                      ),
+                      child: Container(
+                        height: 48,
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                              colors: [Color(0xFF4DD0E1), Color(0xFF4158D0)]),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: const Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.chat_bubble_outline_rounded,
+                                  color: Colors.white, size: 16),
+                              SizedBox(width: 8),
+                              Text('Message expert',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w600)),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
