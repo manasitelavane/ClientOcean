@@ -1,4 +1,4 @@
-package com.example.clientocean
+package com.example.clientenx
 
 import io.flutter.embedding.android.FlutterActivity
 

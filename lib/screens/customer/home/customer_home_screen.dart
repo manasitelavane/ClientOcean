@@ -228,7 +228,7 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                     iconColor: const Color(0xFF059669),
                     bgColor: const Color(0xFFD1FAE5),
                     onTap: () => Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) => const CategoryScreen()),
+                      MaterialPageRoute(builder: (_) => const CategoryScreen(category: 'Finance & Tax')),
                     ),
                   ),
                   _CategoryCard(
@@ -237,7 +237,7 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                     iconColor: const Color(0xFF4158D0),
                     bgColor: const Color(0xFFE0E7FF),
                     onTap: () => Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) => const CategoryScreen()),
+                      MaterialPageRoute(builder: (_) => const CategoryScreen(category: 'Legal')),
                     ),
                   ),
                   _CategoryCard(
@@ -246,7 +246,7 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                     iconColor: const Color(0xFFEF4444),
                     bgColor: const Color(0xFFFEE2E2),
                     onTap: () => Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) => const CategoryScreen()),
+                      MaterialPageRoute(builder: (_) => const CategoryScreen(category: 'Health')),
                     ),
                   ),
                   _CategoryCard(
@@ -255,7 +255,7 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                     iconColor: const Color(0xFF7C3AED),
                     bgColor: const Color(0xFFEDE9FE),
                     onTap: () => Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) => const CategoryScreen()),
+                      MaterialPageRoute(builder: (_) => const CategoryScreen(category: 'Tech & IT')),
                     ),
                   ),
                   _CategoryCard(
@@ -264,7 +264,7 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                     iconColor: const Color(0xFF16A34A),
                     bgColor: const Color(0xFFDCFCE7),
                     onTap: () => Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) => const CategoryScreen()),
+                      MaterialPageRoute(builder: (_) => const CategoryScreen(category: 'Design')),
                     ),
                   ),
                   _CategoryCard(
@@ -273,7 +273,7 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                     iconColor: const Color(0xFFD97706),
                     bgColor: const Color(0xFFFEF3C7),
                     onTap: () => Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) => const CategoryScreen()),
+                      MaterialPageRoute(builder: (_) => const CategoryScreen(category: 'Business')),
                     ),
                   ),
                 ],
